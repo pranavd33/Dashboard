@@ -1,3 +1,5 @@
+@import 'bootstrap/dist/css/bootstrap.min.css';
+
 /* --- GLOBAL VARIABLES & RESETS --- */
 :root { 
     --compserv-orange: #f6941d; 

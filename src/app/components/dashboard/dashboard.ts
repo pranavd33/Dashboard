@@ -156,4 +156,5 @@ export class DashboardComponent implements AfterViewInit {
       this.isDownloading = false;
     }, 2000);
   }
+  
 }
