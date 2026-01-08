@@ -1,0 +1,40 @@
+.selection-card {
+    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+    border-radius: 20px;
+    padding: 40px 30px;
+    text-align: center;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border: 1px solid rgba(0,0,0,0.05);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    height: 100%;
+}
+.selection-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(245, 158, 11, 0.15);
+    border-color: rgba(245, 158, 11, 0.3);
+}
+.selection-card .icon-box {
+    width: 80px; height: 80px;
+    background: rgba(245, 158, 11, 0.1); 
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 25px auto;
+    transition: transform 0.3s ease;
+}
+.selection-card:hover .icon-box {
+    transform: scale(1.1) rotate(5deg);
+    background: rgba(245, 158, 11, 0.2);
+}
+.selection-card i { color: #f59e0b; font-size: 2.5rem; }
+.selection-card h3 { font-size: 1.5rem; font-weight: 700; color: #333; margin-bottom: 10px; }
+.selection-card p { color: #666; font-size: 0.95rem; line-height: 1.5; margin: 0; }
+.selection-card::before {
+    content: ''; position: absolute; top: -50px; right: -50px;
+    width: 100px; height: 100px;
+    background: radial-gradient(circle, rgba(245,158,11,0.1) 0%, rgba(255,255,255,0) 70%);
+    border-radius: 50%; transition: 0.5s;
+}
+.selection-card:hover::before { transform: scale(1.5); }

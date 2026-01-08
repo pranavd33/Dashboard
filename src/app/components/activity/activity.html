@@ -1,0 +1,19 @@
+<div class="activity-card">
+    <div class="header">
+        <h4 class="title">Activity</h4>
+        <select class="period-select">
+            <option>Weekly</option>
+            <option>Monthly</option>
+        </select>
+    </div>
+    
+    <div class="chart-wrapper">
+        <div *ngIf="isBrowser" style="position: relative; height: 100%; width: 100%;">
+            <canvas baseChart
+                [data]="lineChartData"
+                [options]="lineChartOptions"
+                [type]="'line'">
+            </canvas>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,3 @@
+.table-custom { width: 100%; border-collapse: collapse; }
+.table-custom thead th { background-color: var(--compserv-orange); color: white; border: none; padding: 12px; text-align: left;}
+.table-custom tbody td { padding: 12px; border-bottom: 1px solid #eee; }

@@ -1,1 +1,92 @@
-/* You can add global styles to this file, and also import other style files */
+/* --- GLOBAL VARIABLES & RESETS --- */
+:root { 
+    --compserv-orange: #f6941d; 
+    --compserv-purple: #861f41; 
+    --compserv-text-dark: #4a1d1f;
+    --bg-teal: #9bdcdb;
+    --grid-line: rgba(255, 255, 255, 0.2);
+    --primary-dark: #111827; 
+    --card-white: #ffffff;
+    --text-grey: #6b7280;
+    --shadow-soft: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+
+body { 
+    background-color: var(--bg-teal);
+    background-image: 
+        linear-gradient(var(--grid-line) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+    background-size: 30px 30px;
+    display: flex; 
+    flex-direction: column;
+    height: 100vh; 
+    color: #333; 
+    overflow: hidden; 
+}
+
+.watermark {
+    position: absolute; top: 50%; left: 20%; transform: translate(-50%, -50%);
+    font-size: 80vh; font-weight: 700; color: rgba(255, 255, 255, 0.4);
+    z-index: -1; pointer-events: none; font-family: sans-serif;
+}
+
+/* --- SHARED UTILITIES --- */
+.text-orange { color: var(--compserv-orange); }
+.text-dark .stat-header { color: #333; }
+
+/* --- SHARED BUTTONS --- */
+.btn-orange {
+    background-color: #f59e0b !important;
+    color: white !important;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.3s;
+    text-decoration: none;
+    display: inline-block;
+}
+.btn-orange:hover { background-color: #d97706 !important; }
+.btn-full { width: 100%; margin-top: 15px; display: block; }
+.btn-outline {
+    background: transparent; border: 2px solid #e5e7eb; color: #374151;
+    padding: 10px 24px; border-radius: 8px; font-weight: 600; cursor: pointer; transition: 0.3s;
+}
+.btn-outline:hover { border-color: #d1d5db; background: #f3f4f6; }
+
+/* --- HELPER FOR ANGULAR ANIMATIONS --- */
+.bar { height: 0; transition: height 1s ease; }
+
+/* --- UPDATED GLOBAL STYLES --- */
+
+/* 1. Reset HTML and Body to ensure full height */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden; /* Prevent double scrollbars */
+}
+
+/* 2. Apply the Background and Flex Layout to the Body */
+body { 
+    background-color: var(--bg-teal);
+    background-image: 
+        linear-gradient(var(--grid-line) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+    background-size: 30px 30px;
+    font-family: 'Poppins', sans-serif;
+    color: #333; 
+}
+
+/* 3. VITAL FIX: Make Angular's app-root the flex container */
+/* This forces the app-root to fill the screen and organize the Navbar/Footer */
+app-root {
+    display: flex; 
+    flex-direction: column;
+    height: 100vh; 
+    width: 100%;
+}

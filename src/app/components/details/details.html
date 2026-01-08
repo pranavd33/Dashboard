@@ -1,0 +1,22 @@
+<div id="details-view">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="mb-0">{{ type }} Details</h2>
+        <button class="btn btn-outline-dark" (click)="goBack()">
+            <i class="fa-solid fa-arrow-left"></i> Back to Selection
+        </button>
+    </div>
+    <div class="table-responsive" *ngIf="tableData">
+        <table class="table table-hover table-custom">
+            <thead>
+                <tr>
+                    <th *ngFor="let head of tableData.headers">{{ head }}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let row of tableData.rows">
+                    <td *ngFor="let cell of row">{{ cell }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

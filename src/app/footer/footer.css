@@ -1,0 +1,27 @@
+/* Custom variables if not in global styles */
+:host {
+    --compserv-purple: #584b4b;
+    --compserv-orange: #ff9900;
+}
+
+.footer-section {
+    height: 40px; /* Fixed height for consistency */
+    background-color: #f8f9fa; /* Bootstrap 'bg-light' equivalent */
+    flex-shrink: 0;
+    z-index: 1000;
+}
+
+/* Custom Text Helpers */
+.text-purple {
+    color: var(--compserv-purple) !important;
+}
+
+.bg-orange {
+    background-color: var(--compserv-orange) !important;
+    color: white;
+}
+
+/* Ensure font size is professional and small */
+.small {
+    font-size: 0.85rem;
+}

@@ -1,12 +1,16 @@
-import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common'; // <--- 1. Import this
+import { RouterOutlet, RouterLink } from '@angular/router';
+import { NavbarComponent } from './navbar/navbar';
+import { Footer } from './footer/footer';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
-  templateUrl: './app.html',
-  styleUrl: './app.css'
+  standalone: true,
+  imports: [CommonModule, RouterOutlet,NavbarComponent,Footer], 
+  templateUrl: './app.html', // Ensure this matches your file name
+  styleUrls: ['./app.css']
 })
 export class App {
-  protected readonly title = signal('compserv-dashboard');
+  title = 'compserv-dashboard';
 }

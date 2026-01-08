@@ -1,0 +1,12 @@
+/* --- MAIN LAYOUT --- */
+.layout-container { display: flex; flex: 1; overflow: hidden; position: relative; }
+.main-content { 
+    flex-grow: 1; 
+    padding: 20px; 
+    overflow-y: auto; 
+    overflow-x: hidden; 
+    position: relative;
+    background: rgba(255, 255, 255, 0.4); 
+    backdrop-filter: blur(2px);
+}
+

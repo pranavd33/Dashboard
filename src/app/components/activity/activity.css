@@ -1,0 +1,54 @@
+.activity-card {
+    background: white;
+    border-radius: 10px;
+    padding: 15px;
+    height: 100%;
+    width: 100%;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+    display: flex;
+    flex-direction: column;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.title {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 700;
+    color: #4b0082; /* Brand Purple */
+}
+
+.period-select {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 10px;
+    padding: 2px 5px;
+    background: #f9f9f9;
+    color: #555;
+    outline: none;
+}
+
+.chart-wrapper {
+    flex-grow: 1;
+    position: relative;
+    width: 100%;
+    /* FIX: Force it to fill the flex parent */
+    height: 100%; 
+    /* FIX: Flexbox quirk - min-height 0 allows nested flex items to shrink properly */
+    min-height: 0; 
+    overflow: hidden;
+}
+
+/* FIX: This targets the <div *ngIf="isBrowser"> inside the wrapper */
+.chart-wrapper > div {
+    height: 100% !important;
+    width: 100% !important;
+    position: absolute; /* Anchor it firmly */
+    top: 0;
+    left: 0;
+}

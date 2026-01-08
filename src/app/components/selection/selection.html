@@ -1,0 +1,35 @@
+<div id="selection-view">
+    <div class="d-flex justify-content-between align-items-center mb-5">
+        <div>
+            <h2 class="mb-1" style="font-weight: 700; color: #333;">Select Category</h2>
+            <p class="text-muted mb-0">Choose a service to view details</p>
+        </div>
+        <button class="btn btn-outline-dark rounded-pill px-4" (click)="goBack()">
+            <i class="fa-solid fa-arrow-left me-2"></i> Back
+        </button>
+    </div>
+    
+    <div class="row g-4">
+        <div class="col-md-4">
+            <div class="selection-card" (click)="selectCategory('Loan')">
+                <div class="icon-box"><i class="fa-solid fa-hand-holding-dollar"></i></div>
+                <h3>Loan</h3>
+                <p>View active loans, EMI schedules, and pending approvals instantly.</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="selection-card" (click)="selectCategory('Saving')">
+                <div class="icon-box"><i class="fa-solid fa-piggy-bank"></i></div>
+                <h3>Saving</h3>
+                <p>Check your savings account balance, recent transactions, and interest.</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="selection-card" (click)="selectCategory('Investment')">
+                <div class="icon-box"><i class="fa-solid fa-chart-line"></i></div>
+                <h3>Investment</h3>
+                <p>Track your portfolio growth, mutual funds, and market performance.</p>
+            </div>
+        </div>
+    </div>
+</div>

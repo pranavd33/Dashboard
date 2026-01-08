@@ -1,0 +1,130 @@
+<div id="dashboard-view">
+  <div class="stats-grid">
+      <div class="card text-dark stat-card active-card" (click)="goToSelection()" style="cursor: pointer;">
+          <div class="stat-header">
+              <span style="color:#333; font-weight:600;">Earning</span>
+              <i class="fa-solid fa-circle-dollar-to-slot" style="color:orange;"></i>
+          </div>
+          <div class="stat-value is-currency" data-target="628">0</div>
+      </div>
+
+      <div class="card stat-card">
+        <div class="stat-header"><span>Share</span><i class="fa-solid fa-share-nodes text-orange"></i></div>
+        <div class="stat-value" data-target="2,434">0,000</div>
+      </div>
+      <div class="card stat-card">
+        <div class="stat-header"><span>Likes</span><i class="fa-solid fa-thumbs-up text-orange"></i></div>
+        <div class="stat-value" data-target="1,259">0,000</div>
+    </div>
+    <div class="card stat-card">
+        <div class="stat-header"><span>Rating</span><i class="fa-solid fa-star text-orange"></i></div>
+        <div class="stat-value" data-target="8.5">0.0</div>
+    </div>
+  </div>
+
+  <div class="dashboard-grid">
+      <div class="left-column">
+          <div class="chart-container">
+            <div class="stat-header align-items-center justify-content-between">
+                <h3 style="color:#333; margin:0; font-size: 18px;">Result</h3>
+                <div class="d-flex align-items-center gap-2">
+                    <span class="price-badge">$28,790</span>
+                    <button class="btn-orange" (click)="togglePnlModal()">Check Now</button>
+                </div>
+            </div>
+            <div class="bar-chart">
+               <div class="bar-group"><div class="bars"><div class="bar blue" data-h="30px"></div><div class="bar orange" data-h="20px"></div></div><span class="bar-label">JAN</span></div>
+               <div class="bar-group"><div class="bars"><div class="bar blue" data-h="50px"></div><div class="bar orange" data-h="35px"></div></div><span class="bar-label">FEB</span></div>
+               <div class="bar-group"><div class="bars"><div class="bar blue" data-h="40px"></div><div class="bar orange" data-h="25px"></div></div><span class="bar-label">MAR</span></div>
+               <div class="bar-group"><div class="bars"><div class="bar blue" data-h="25px"></div><div class="bar orange" data-h="45px"></div></div><span class="bar-label">APR</span></div>
+               <div class="bar-group"><div class="bars"><div class="bar blue" data-h="35px"></div><div class="bar orange" data-h="30px"></div></div><span class="bar-label">MAY</span></div>
+               <div class="bar-group"><div class="bars"><div class="bar blue" data-h="70px"></div><div class="bar orange" data-h="50px"></div></div><span class="bar-label">JUN</span></div>
+               <div class="bar-group"><div class="bars"><div class="bar blue" data-h="30px"></div><div class="bar orange" data-h="20px"></div></div><span class="bar-label">JUL</span></div>
+            </div>
+          </div>
+
+          <div class="bottom-section">
+          <app-activity></app-activity>
+          </div>
+          </div>
+
+      <div class="right-panel">
+          <h3>Summary</h3>
+          <div class="donut-chart" data-percent="45"><div class="donut-inner">0%</div></div>
+          
+          <div class="list-item"><span>Pending</span> <span>12</span></div>
+          <div class="list-item"><span>Completed</span> <span>85</span></div>
+          <div class="list-item"><span>On Hold</span> <span>3</span></div>
+          <button class="btn-orange btn-full" (click)="toggleReportModal()">Full Report</button>
+      </div>
+  </div>
+</div>
+
+<div class="modal-overlay" *ngIf="showPnlModal" (click)="togglePnlModal()">
+    <div class="modal-content" (click)="$event.stopPropagation()">
+        <div class="modal-header">
+            <h3>Monthly Profit & Loss</h3>
+            <button class="close-btn" (click)="togglePnlModal()">&times;</button>
+        </div>
+        <div class="modal-body">
+            <table class="pnl-table">
+                <thead><tr><th>Month</th><th>Income</th><th>Exp.</th><th>P/L</th></tr></thead>
+                <tbody>
+                    <tr *ngFor="let item of pnlData">
+                        <td><strong>{{item.month}}</strong></td>
+                        <td class="text-income">${{item.income}}</td>
+                        <td class="text-expense">${{item.expense}}</td>
+                        <td [ngClass]="(item.income - item.expense) >= 0 ? 'text-success' : 'text-danger'">
+                            {{ (item.income - item.expense) >= 0 ? '+' : '' }}${{ item.income - item.expense }}
+                        </td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="3"><strong>Net Profit</strong></td>
+                        <td class="text-success"><strong>${{ calculateTotalProfit() }}</strong></td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+        <button class="btn-orange btn-full" (click)="togglePnlModal()">Download PDF Report</button>
+    </div>
+</div>
+
+<div class="report-overlay" *ngIf="showReportModal" (click)="toggleReportModal()">
+  <div class="report-card" (click)="$event.stopPropagation()">
+      <div class="report-header">
+          <h2>Comprehensive Annual Report</h2>
+          <button class="report-close" (click)="toggleReportModal()"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="report-body">
+          <div class="metrics-grid">
+              <div class="metric-box m-blue">
+                <h4>Total Revenue</h4><h3>{{reportData.totalRevenue}}</h3>
+              </div>
+              <div class="metric-box m-orange">
+                <h4>Net Profit</h4><h3>{{reportData.netProfit}}</h3>
+              </div>
+              <div class="metric-box m-purple">
+                <h4>Annual Growth</h4><h3>{{reportData.growth}}</h3>
+              </div>
+          </div>
+          <div class="section-title">Segment Performance</div>
+          <div class="performance-list">
+             <div class="perf-item" *ngFor="let cat of reportData.categories">
+                 <div class="perf-header"><span>{{cat.name}}</span><span>{{cat.percent}}%</span></div>
+                 <div class="progress-track">
+                     <div class="progress-fill" [attr.data-width]="cat.percent + '%'" [style.background]="cat.color"></div>
+                 </div>
+             </div>
+          </div>
+      </div>
+      <div class="report-footer">
+        <button class="btn-outline" (click)="toggleReportModal()">Close</button>
+        <button class="btn-orange" (click)="startDownload()">
+            <span *ngIf="!isDownloading"><i class="fa-solid fa-download"></i> Download PDF</span>
+            <span *ngIf="isDownloading"><i class="fa-solid fa-spinner fa-spin"></i> Downloading...</span>
+        </button>
+    </div>
+  </div>
+</div>
