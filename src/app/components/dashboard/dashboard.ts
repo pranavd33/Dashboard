@@ -2,11 +2,13 @@ import { Component, AfterViewInit, Inject, PLATFORM_ID } from '@angular/core';
 import { CommonModule, isPlatformBrowser } from '@angular/common'; 
 import { Router } from '@angular/router';
 import { ActivityComponent } from '../activity/activity';
+import { NavbarComponent } from '../navbar/navbar';
+import { Footer } from '../footer/footer';
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [CommonModule,ActivityComponent],
+  imports: [CommonModule, ActivityComponent],
   templateUrl: './dashboard.html',
   styleUrls: ['./dashboard.css']
 })
@@ -128,12 +130,18 @@ export class DashboardComponent implements AfterViewInit {
   }
 
   // --- 3. Modal Logic ---
-  togglePnlModal() { 
-    this.showPnlModal = !this.showPnlModal; 
+  togglePnlModal() {
+    this.showPnlModal = !this.showPnlModal;
+    // Set navbar visibility opposite the modal state (hide when modal open)
+    NavbarComponent.visible = !this.showPnlModal;
+    Footer.visible = !this.showPnlModal;
   }
   
   toggleReportModal() { 
     this.showReportModal = !this.showReportModal; 
+
+    NavbarComponent.visible = !this.showReportModal;
+    Footer.visible = !this.showReportModal;
     
     if(this.showReportModal && isPlatformBrowser(this.platformId)) {
       setTimeout(() => {

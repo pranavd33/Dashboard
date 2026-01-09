@@ -7,9 +7,15 @@ import { RouterModule } from '@angular/router';
   imports: [CommonModule, RouterModule],
   standalone: true,
   templateUrl: './footer.html',
-  styleUrl: './footer.css',
+  styleUrls: ['./footer.css'],
 })
 export class Footer {
+  // Static visibility flag so other components can toggle footer display
+  static visible = true;
+
+  // Instance getter so template can bind to `visible`
+  get visible() { return Footer.visible; }
+
   today = new Date();
 
 }
